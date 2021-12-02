@@ -1,46 +1,33 @@
 const wordSearch = (matrix, word) => {
+  // CREATE ARRAY of texts of each ROW
   const horizontalJoin = matrix.map((ls) => ls.join(''));
-  // console.log(horizontalJoin)
-  for (l of horizontalJoin) {
-    if (l.includes(word)) return true;
-  }
 
-  let verticalArr = [];
+  // CREATE ARRAY of texts of each COLUMN:
+  // 1. create array of EMPTY cells for each column
+  let verticalJoin = [];
   for (let col of matrix[0]) {
-    verticalArr.push('');
+    verticalJoin.push('');
   }
-
+  // 2. fill in the empty cells
   for (let row = 0; row < matrix.length; row++) {
     for (let col = 0; col < matrix[row].length; col++) {
-      verticalArr[col] += matrix[row][col];
+      verticalJoin[col] += matrix[row][col];
     }
   }
 
+  // Check Horizontal Array for matching word (forward & reverse cases)
   for (let string of horizontalJoin) {
     if (string.includes(word)) return true;
-    if (string.split('').reverse().join('').includes(word)) return true;
+    if (string.split('').reverse().join('').includes(word)) return true; // reverse case
   }
-  
-  for (let string of verticalArr) {
+
+  // Check Vertical Array for matching word (forward & reverse cases)
+  for (let string of verticalJoin) {
     if (string.includes(word)) return true;
-    if (string.split('').reverse().join('').includes(word)) return true;
+    if (string.split('').reverse().join('').includes(word)) return true; // reverse case
   }
 
-  return false;
+  return false; // if no matches found
 };
-
-let matrix = [
-  [ 'A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L' ],
-  [ 'S', 'E', 'I', 'N', 'F', 'E', 'L', 'D' ],
-  [ 'Y', 'F', 'C', 'F', 'Q', 'U', 'A', 'L' ],
-  [ 'H', 'M', 'J', 'T', 'E', 'V', 'R', 'G' ],
-  [ 'W', 'H', 'C', 'S', 'Y', 'E', 'R', 'L' ],
-  [ 'B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B' ],
-  [ 'U', 'B', 'T', 'W', 'A', 'P', 'A', 'I' ],
-  [ 'O', 'D', 'C', 'A', 'K', 'U', 'A', 'S' ],
-  [ 'E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L' ]
-];
-
-wordSearch(matrix, 'FRANK');
 
 module.exports = wordSearch;

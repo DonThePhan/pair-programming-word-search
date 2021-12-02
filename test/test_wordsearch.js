@@ -17,7 +17,7 @@ describe('#wordSearch()', function() {
         [ 'O', 'D', 'C', 'A', 'K', 'U', 'A', 'S' ],
         [ 'E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L' ]
       ],
-      'FRANK'
+      'FRANK' // no match
     );
 
     assert.isFalse(result);
@@ -36,9 +36,8 @@ describe('#wordSearch()', function() {
         [ 'O', 'D', 'C', 'A', 'K', 'U', 'A', 'S' ],
         [ 'E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L' ]
       ],
-      'SEINFELD'
+      'SEINFELD' // forward match
     );
-
     assert.isTrue(result);
   });
 
@@ -55,9 +54,8 @@ describe('#wordSearch()', function() {
         [ 'O', 'D', 'C', 'A', 'K', 'U', 'A', 'S' ],
         [ 'E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L' ]
       ],
-      'EOUB'
+      'EOUB' // reverse match
     );
-
     assert.isTrue(result);
   });
 
@@ -74,9 +72,8 @@ describe('#wordSearch()', function() {
         [ 'O', 'D', 'C', 'A', 'K', 'U', 'A', 'S' ],
         [ 'E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L' ]
       ],
-      'AAAYR'
+      'AAAYR' // reverse match
     );
-
     assert.isTrue(result);
   });
 });
